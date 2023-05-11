@@ -105,4 +105,4 @@ tabix Salmo.salar.CTmax.combined.vcf.gz
 Save .vcf.gz to local computer
 ```
 
-scp username@address:/directory/Salmo.salar.CTmax.combined.vcf.gz C://local/directory
+scp username@address:/filepath/Salmo.salar.CTmax.combined.vcf.gz IP_Address:C:/localdirectory/
