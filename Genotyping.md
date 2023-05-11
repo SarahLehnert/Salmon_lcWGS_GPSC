@@ -94,7 +94,12 @@ After producing .vcf.gz files and index files, I then merged vcf.gz with bcftool
 
 conda activate bcftools
 bcftools merge *vcf.gz > Salmo.salar.CTmax.combined.vcf
+deactivate bcftools
+
+bgzip Salmo.salar.CTmax.combined.vcf
+
+conda activate tabix
+tabix Salmo.salar.CTmax.combined.vcf.gz
 
 ```
-
 
