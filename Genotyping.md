@@ -73,6 +73,26 @@ Now we have a bunch of kinda useless bcf files. They're smaller than vcfs but th
 while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_aeip.tsv,angsdparam=refs_angsdparam.tsv  11_bcf_to_vcf.sh ;  
   done < Ssal_v3.1_genomic.chroms
 ```
-Next I combined vcf files
+Next I combined vcf files. To merge all the .vcf files (one per chromosome), I had to use bgzip and tabix to merge the vcf files together.
+
+To run bgzip and tabix within my file directory:
+
+```
+for FILE in *.vcf; do bgzip $FILE; done
+
+#source conda
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate tabix
+
+for FILE in *.vcf.gz; do tabix $FILE; done
+```
+
+After producing .vcf.gz files and index files, I then merged vcf.gz with vcftools
+
+```
+conda activate vcftools
+vcf-concat *.vcf.gz | gzip > Salmo.salar.CTmax.combined.vcf
+
+```
 
 
