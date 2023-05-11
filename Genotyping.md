@@ -1,10 +1,14 @@
 We will calculate [genotype likelihoods](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3593722/), which are uncertainty-weighted estimates of an individual's genotype at a locus. We will carry this out across each chromosome separately, because it is somewhat memory and time intensive. Notice that we are now exporting a couple of different variables to slurm - we are specifying chromosome rather than set, and some run-specific parameters that we keep in another params file.
 
+Here will need a list of chromosomes names in input.
+
 ```
-while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_aeip.tsv,angsdparam=refs_angsdparam.tsv  09_angsd_bcf_beag_maf.sh ;  
-  done < Ssal_v3.1_genomic.chroms
+while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_CTmax.tsv,angsdparam=refs_angsdparam.tsv  09_angsd_bcf_beag_maf.sh ;  
+  done < ../Ssal_v3.1_genomic.chroms
 ```
-We are doing this first for a set of individuals sequenced at high coverage. The ANGSD command looks like this:
+For the CTmax project, I ran with all individuals together (not reference samples).
+
+The ANGSD command looks like this:
 
 ```
 cd projdir/angsd_in
@@ -47,27 +51,28 @@ conda activate align
 angsd sites index All_sites.tsv
 conda deactivate 
 ```
-We can add this information to the parameter file for our lcWGS samples:
+We can add this information to the parameter file for our lcWGS samples (as below) - however, I did only ran script 09, and not 10, as I did not use a set of reference sites/individuals. 
+
+For minInd use 0.80 x # of individuals - indicating SNP is genotyped in >80% of samples
+For minDepth use 2 x # of individuals - indicating ~2x coverage for genotyping
 
 ```
-bamfile=lcbams.tsv
-runname=lcwgs
-minInd=600
-minDepth=1000
-sites=All_sites.tsv
-```
-And then also add the --sites $sites option to our ANGSD call for these samples. Because we are specifying another option for ANGSD, we run a new script that now includes the site option:
+#Update parameter file 
+bamfile=refbam_Ctmax.tsv
+runname=refsamples
+minInd=307
+minDepth=614
+sites=angsd_in/All_sites.tsv
 
 ```
-while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_aeip.tsv,angsdparam=lcwgs_angsdparam.tsv  10_refsites_angsd_bcf_beag_maf.sh ;  
-  done < Ssal_v3.1_genomic.chroms 
-```
+Note I did not run 10_refsites_angsd_bcf_beag_maf.sh
 
 Now we have a bunch of kinda useless bcf files. They're smaller than vcfs but they lack human interpretable info, so we need to convert them to vcfs. We do this per bcf file, so we again specify the chromosome and file set.
 
 ```
 while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_aeip.tsv,angsdparam=refs_angsdparam.tsv  11_bcf_to_vcf.sh ;  
   done < Ssal_v3.1_genomic.chroms
+```
+Next I combined vcf files
 
-while read chrom;  do sbatch --export=ALL,chrom=$chrom,paramfile=WGSparams_aeip.tsv,angsdparam=lcwgs_angsdparam.tsv  11_bcf_to_vcf.sh ;  
-  done < Ssal_v3.1_genomic.chroms 
+
