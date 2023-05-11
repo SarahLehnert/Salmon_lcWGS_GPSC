@@ -13,6 +13,9 @@ for FILE in *.vcf.gz; do tabix $FILE; done
 ```
 
 After producing .vcf.gz files and index files, I then merged vcf.gz with bcftools
+
 ```
+conda activate vcftools
 vcf-merge *.vcf.gz >  Salmo.salar.CTmax.combined.vcf
+
 ```
