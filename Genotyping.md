@@ -104,4 +104,5 @@ tabix Salmo.salar.CTmax.combined.vcf.gz
 ```
 Save .vcf.gz to local computer
 ```
-scp sal004@inter-dfo-ubuntu2004:/gpfs/fs7/grdi/genarcc/wp3/Atlantic_Salmon/SLehnert/angsd_out/Salmo.salar.CTmax.combined.vcf.gz C://Users/LehnertS/Desktop/
+
+scp username@address:/directory/Salmo.salar.CTmax.combined.vcf.gz C://local/directory
