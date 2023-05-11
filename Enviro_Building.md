@@ -1,5 +1,7 @@
 This section details how to build the conda environments, download key software, and access supplementary information that is required for the HPC genotyping workflow. 
 
+**THIS IS MOSTLY A COPY OF TONY KESS' SCRIPT** Have added some addtional things that I did to keep track... 
+
 # Using Mamba to Install Software via Bioconda
 [Mamba](https://github.com/mamba-org/mamba) is a fast and parallel implementation of the package management tool [conda](https://docs.conda.io/projects/conda/en/stable/#)
 More information on installing conda can be found [here](https://github.com/GRDI-GenARCC/tutorials-and-workshops/blob/main/Conda/conda_installation_guide.md)
@@ -66,4 +68,11 @@ Additionally, we need a reference genome for our study species. We will work wit
 
 ```
 curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v1/genome/accession/GCF_905237065.1/download?include_annotation_type=GENOME_GFF,RNA_FASTA,CDS_FASTA,PROT_FASTA&filename=GCF_905237065.1.zip" -H "Accept: application/zip"
+```
+
+I have also installed additional packages including bgzip, and initially I had issues wtih the version of fastp (so tried different route to install newer version)
+
+```
+conda create -n fastp fastp -c bioconda/label/main #for newer version of fastp
+pip install bgzip
 ```
