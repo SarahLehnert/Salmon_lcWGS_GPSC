@@ -90,8 +90,13 @@ for FILE in *.vcf.gz; do tabix $FILE; done
 After producing .vcf.gz files and index files, I then merged vcf.gz with vcftools
 
 ```
+#vcftools seems to be taking a long time - may try bcftools instead
 conda activate vcftools
 vcf-concat *.vcf.gz | gzip > Salmo.salar.CTmax.combined.vcf
+
+#or try
+conda activate bcftools
+bcftools merge *vcf.gz > Salmo.salar.CTmax.combined.vcf
 
 ```
 
