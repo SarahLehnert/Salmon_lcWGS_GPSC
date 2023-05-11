@@ -84,6 +84,15 @@ Output aligments are sotred by samtools and provided as .bam files.
 for i in {00..03} ;    do sbatch --export=ALL,set=ctmax_set$i,paramfile=WGSparams_CTmax.tsv 03_bwamem2align.sh ;  done
 
 ```
+
+To check on jobs while running can check job queue and also look at slurm-out files. Good idea to check for potential failures.
+
+```
+squeue -u username
+nano slurm-jobfile.out
+```
+
+
 Next, we remove sequence duplicates using the genome analysis toolkit. Two things to make sure of in advance. First, we need to make a directory for the temporary files produced by gatk:
 
 ```
