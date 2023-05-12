@@ -102,7 +102,7 @@ conda activate tabix
 tabix Salmo.salar.CTmax.combined.vcf.gz
 
 ```
-Save .vcf.gz to local computer - This command should work
+Save .vcf.gz to local computer. Do this from home directory on computer (log off GPSC)
 ```
 #make sure to log out of GPSC first...
 scp username@address:/filepath/Salmo.salar.CTmax.combined.vcf.gz /Users/localdirectory/
