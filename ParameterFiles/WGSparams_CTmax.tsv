@@ -1,0 +1,37 @@
+
+  
+#actual file paths are hidden here*
+
+#main directory for project
+projdir=/filepath_on_GPSC/
+#sample info
+projname=CTmax
+
+#genome file location
+genome=/filepath_on_GPSC/GCF_905237065.1_Ssal_v3.1_genomic.fna
+#species
+species=$(echo Salmo.salar)
+
+#software
+
+#gatk-ing
+gatk=/filepath_on_GPSC/gatk-4.3.0.0/gatk
+
+#gatk37 - old version that still allows indel realignment, requires openjdk 8, built in gatk37 conda env
+#to run this one make sure you source your conda environment
+#and then run conda activate gatk37 to get openjdk8
+gatk37=/filepath_on_GPSC/GenomeAnalysisTK.jar
+
+#angsd - inscrutable but useful genotype likelihood tool
+
+#beagle - imputation and phasing and likelihoods and other stuff
+beagle4=/filepath_on_GPSC/beagle.r1399.jar
+
+#pcangsd - selection, admixture, PCA
+pcangsd=/filepath_on_GPSC/pcangsd/pcangsd.py
+
+
+
+
+
+
