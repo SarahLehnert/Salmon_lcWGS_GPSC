@@ -102,7 +102,7 @@ conda activate tabix
 tabix Salmo.salar.CTmax.combined.vcf.gz
 
 ```
-Save .vcf.gz to local computer
+Save .vcf.gz to local computer - This command should work - but it did not work for me.... Need to resolve issue
 ```
 
-scp username@address:/filepath/Salmo.salar.CTmax.combined.vcf.gz IP_Address:C:/localdirectory/
+scp username@address:/filepath/Salmo.salar.CTmax.combined.vcf.gz C:/localdirectory/
