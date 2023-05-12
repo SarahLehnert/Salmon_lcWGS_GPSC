@@ -93,7 +93,7 @@ After producing .vcf.gz files and index files, I then merged vcf.gz with bcftool
 #vcftools seems to be taking a long time - trying bcftools instead
 
 conda activate bcftools
-bcftools merge *vcf.gz > Salmo.salar.CTmax.combined.vcf
+bcftools concat *vcf.gz > Salmo.salar.CTmax.combined.vcf
 deactivate bcftools
 
 bgzip Salmo.salar.CTmax.combined.vcf
