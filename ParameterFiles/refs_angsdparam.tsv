@@ -1,0 +1,5 @@
+bamfile=refbam_Ctmax.tsv
+runname=refsamples
+minInd=307
+minDepth=614
+#sites=angsd_in/All_sites.tsv
