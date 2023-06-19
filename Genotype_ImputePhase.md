@@ -1,3 +1,5 @@
+This script is for after intial pre-processing and genotyping. This script includes filtering the data and running imputation/phasing, as well as cleaning up individual ID names, adding SNP names, updating chromosomes numbers, adding phenotype and population info.
+
 
 First filter out individuals with low genotyping rate (<30%) - current file includes some blanks so these should be removed before imputation/phasing. 
 Here we used plink to filter out individuals with <30% genotyping rate, and also filtered for MAF>0.05
