@@ -164,5 +164,6 @@ Also run plink with --recode 12 and --recode A for files that may be needed for 
 
 ```
 
-##also ran plink with --recode 12 and --recode A for files that may be needed for GWAS
-#next trying pcadapt
+At this point it is time to start running analyses with this final dataset 
+
+First step will be to run pcadapt to check if populations have been correctly assigned and start running GWAS analyses
